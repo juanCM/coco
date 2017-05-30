@@ -14,7 +14,7 @@ import com.models.User;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
+//import javax.persistence.Query;
 
 public class UserDAO {
     
@@ -43,10 +43,15 @@ public class UserDAO {
     }
     
     public boolean insertUser(User user){
+         em.getTransaction().begin();
         try{
+           
             em.persist(user);
+            em.getTransaction().commit();
+            
             return true;
         }catch(Exception e){
+            em.getTransaction().rollback();
             return false;
         }
        
@@ -54,9 +59,12 @@ public class UserDAO {
     
     public boolean deleteUser(User user){
          try{
+           
             em.remove(user);
+           
             return true;
         }catch(Exception e){
+         
             return false;
         }
     }
