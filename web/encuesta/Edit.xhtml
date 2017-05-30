@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditEncuestaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditEncuestaLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{encuestaController.selected.id}" title="#{bundle.EditEncuestaTitle_id}" required="true" requiredMessage="#{bundle.EditEncuestaRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditEncuestaLabel_titulo}" for="titulo" />
+                    <h:inputText id="titulo" value="#{encuestaController.selected.titulo}" title="#{bundle.EditEncuestaTitle_titulo}" required="true" requiredMessage="#{bundle.EditEncuestaRequiredMessage_titulo}"/>
+                    <h:outputLabel value="#{bundle.EditEncuestaLabel_descripcion}" for="descripcion" />
+                    <h:inputText id="descripcion" value="#{encuestaController.selected.descripcion}" title="#{bundle.EditEncuestaTitle_descripcion}" required="true" requiredMessage="#{bundle.EditEncuestaRequiredMessage_descripcion}"/>
+                    <h:outputLabel value="#{bundle.EditEncuestaLabel_id_usuario}" for="id_usuario" />
+                    <h:inputText id="id_usuario" value="#{encuestaController.selected.id_usuario}" title="#{bundle.EditEncuestaTitle_id_usuario}" required="true" requiredMessage="#{bundle.EditEncuestaRequiredMessage_id_usuario}"/>
+                    <h:outputLabel value="#{bundle.EditEncuestaLabel_num_preguntas}" for="num_preguntas" />
+                    <h:inputText id="num_preguntas" value="#{encuestaController.selected.num_preguntas}" title="#{bundle.EditEncuestaTitle_num_preguntas}" required="true" requiredMessage="#{bundle.EditEncuestaRequiredMessage_num_preguntas}"/>
+                    <h:outputLabel value="#{bundle.EditEncuestaLabel_visible}" for="visible" />
+                    <h:inputText id="visible" value="#{encuestaController.selected.visible}" title="#{bundle.EditEncuestaTitle_visible}" required="true" requiredMessage="#{bundle.EditEncuestaRequiredMessage_visible}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{encuestaController.update}" value="#{bundle.EditEncuestaSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditEncuestaViewLink}"/>
+                <br />
+                <h:commandLink action="#{encuestaController.prepareList}" value="#{bundle.EditEncuestaShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditEncuestaIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

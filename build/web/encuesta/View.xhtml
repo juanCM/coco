@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewEncuestaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewEncuestaLabel_id}"/>
+                    <h:outputText value="#{encuestaController.selected.id}" title="#{bundle.ViewEncuestaTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewEncuestaLabel_titulo}"/>
+                    <h:outputText value="#{encuestaController.selected.titulo}" title="#{bundle.ViewEncuestaTitle_titulo}"/>
+                    <h:outputText value="#{bundle.ViewEncuestaLabel_descripcion}"/>
+                    <h:outputText value="#{encuestaController.selected.descripcion}" title="#{bundle.ViewEncuestaTitle_descripcion}"/>
+                    <h:outputText value="#{bundle.ViewEncuestaLabel_id_usuario}"/>
+                    <h:outputText value="#{encuestaController.selected.id_usuario}" title="#{bundle.ViewEncuestaTitle_id_usuario}"/>
+                    <h:outputText value="#{bundle.ViewEncuestaLabel_num_preguntas}"/>
+                    <h:outputText value="#{encuestaController.selected.num_preguntas}" title="#{bundle.ViewEncuestaTitle_num_preguntas}"/>
+                    <h:outputText value="#{bundle.ViewEncuestaLabel_visible}"/>
+                    <h:outputText value="#{encuestaController.selected.visible}" title="#{bundle.ViewEncuestaTitle_visible}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{encuestaController.destroyAndView}" value="#{bundle.ViewEncuestaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewEncuestaEditLink}"/>
+                <br />
+                <h:commandLink action="#{encuestaController.prepareCreate}" value="#{bundle.ViewEncuestaCreateLink}" />
+                <br />
+                <h:commandLink action="#{encuestaController.prepareList}" value="#{bundle.ViewEncuestaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewEncuestaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
