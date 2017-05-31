@@ -31,15 +31,8 @@ public class LoginController {
  
     
     public String send(){
-        user.setId(1);
-        user.setNombre("Dummy");
-        user.setApe_p("Dummy");
-        user.setApe_m("Dummy");
-        user.setEmail("Dummy");
-        user.setPassword("123");
-        user.setId_tipo(1);
-   
-        if (!userDAO.insertUser(user)) {
+        user = userDAO.loginUser("waffle133@gmail.com","123");
+        if (user == null) {
             
             RequestContext.getCurrentInstance().update("growl");
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Usuario no encontrado ","Error en login"));

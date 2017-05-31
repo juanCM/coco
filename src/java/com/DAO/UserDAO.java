@@ -11,10 +11,11 @@ package com.DAO;
  */
 
 import com.models.User;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-//import javax.persistence.Query;
+import javax.persistence.Query;
 
 public class UserDAO {
     
@@ -27,16 +28,20 @@ public class UserDAO {
        
     }
     
-    public boolean getUser(String email, String pass){
+    public User loginUser(String email, String pass){
         try{
-            User query = (User) em
-                               .createQuery("SELECT u FROM User u WHERE u.email = :email AND u.password = :password")
-                               .setParameter("email",email)
-                               .setParameter("password",pass);
-
-            return query==null;
+            em.getTransaction().begin();
+            Query query =  em 
+                    .createQuery("SELECT u FROM User u");
+                   // .setParameter("email", email)
+                    //.setParameter("pass",pass);
+            List<User> results = (List<User>) query.getResultList();
+            User user = results.get(0);
+            
+            
+            return user;
         }catch(Exception e){
-            return false;
+                return null;
         }
        
         

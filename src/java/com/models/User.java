@@ -6,6 +6,7 @@
 package com.models;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,8 +31,7 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id", nullable=false, unique=true)
-    private int id;
-    
+    private int id; 
     @Column(name="email", nullable=false, unique=false) 
     private String email;
     
@@ -120,6 +120,34 @@ public class User implements Serializable {
 //        this.idTipo = idTipo;
 //    }
 //    
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + this.id;
+        hash = 53 * hash + Objects.hashCode(this.email);
+        hash = 53 * hash + Objects.hashCode(this.password);
+        hash = 53 * hash + Objects.hashCode(this.nombre);
+        hash = 53 * hash + Objects.hashCode(this.ape_p);
+        hash = 53 * hash + Objects.hashCode(this.ape_m);
+        hash = 53 * hash + this.id_tipo;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final User other = (User) obj;
+        return true;
+    }
 
   
     
