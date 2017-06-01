@@ -15,7 +15,7 @@ import javax.faces.bean.ViewScoped;
 
 import javax.faces.context.FacesContext;
 //import javax.management.Query;
-import org.primefaces.context.RequestContext;
+//import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -34,7 +34,7 @@ public class LoginController {
         user = userDAO.loginUser("waffle133@gmail.com","123");
         if (user == null) {
             
-            RequestContext.getCurrentInstance().update("growl");
+            //RequestContext.getCurrentInstance().update("growl");
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Usuario no encontrado ","Error en login"));
             return null;
         }else{
