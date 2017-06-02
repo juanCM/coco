@@ -12,8 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.JoinColumn;
-//import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -24,10 +22,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class User implements Serializable {
 
-   // @JoinColumn(name = "id_tipo", referencedColumnName = "id")
-  //  @ManyToOne(optional = false)
-    //private TipoUsuario idTipo;
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id", nullable=false, unique=true)
