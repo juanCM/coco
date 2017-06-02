@@ -11,7 +11,7 @@
         <h:outputStylesheet name="css/jsfcrud.css"/>
     </h:head>
     <h:body style="background-color:rgb(56, 59, 58); background-size: cover;"> 
-        <!-- NAVBAR............................................................... -->
+        <!--..............................NAVBAR................................. -->
         <p:growl id="growl" sticky="true" showDetail="true"/>
         <h:form style="margin-bottom: 5px">  
             <p:growl id="navbar"/>
@@ -28,14 +28,17 @@
          <!-- ................................LOGIN.............................. -->
         
         <p:dialog header="Iniciar Sesion" widgetVar="dlg2" modal="true" height="200">
+            <h:form>
             
-            <h:outputText style="width: 200px; margin-bottom: 5px;" value="Ingrese su Usuario" /><br></br>
-            <p:inputText style="width: 200px; margin-bottom: 5px;" value="#{LoginMB.user.email}" type="text"/><br></br>
-            
-            <h:outputText style="width: 200px; margin-bottom: 5px;" value="Ingrese su Contraseña" /><br></br>
-            <p:inputText style="width: 200px; margin-bottom: 5px;" value="#{LoginMB.user.password}" type="Password"/><br></br><br></br>
-            
-            <p:commandButton style="alinge: center; width: 200px; margin-bottom: 5px;" action="#{LoginMB.send}" value="Ingresar"> </p:commandButton>
+                <h:outputLabel style="width: 200px; margin-bottom: 5px;" for="email" value="Ingrese Email" /><br></br>
+                <p:inputText style="width: 200px; margin-bottom: 5px;" id="email" value="#{LoginMB.user.email}" type="text"/><br></br>
+
+                <h:outputLabel style="width: 200px; margin-bottom: 5px;" for="password" value="Ingrese Contraseña" /><br></br>
+                <p:inputText style="width: 200px; margin-bottom: 5px;" id="password" value="#{LoginMB.user.password}" type="Password"/><br></br><br></br>
+
+                <p:commandButton style="width: 200px; margin-bottom: 5px;" action="#{LoginMB.send}" value="Ingresar" ajax="false"> </p:commandButton>
+            </h:form>
+    
             
         </p:dialog>
         
@@ -43,17 +46,26 @@
          
          
         <p:dialog header="Registrarse" widgetVar="dlg1" modal="true" height="400">
-            <h:outputText style="width: 200px; margin-bottom: 5px;" value="Ingrese su Nombre" /><br></br>
-            <p:inputText style="width: 200px; margin-bottom: 5px;" type="text"/><br></br>
-            <h:outputText style="width: 200px; margin-bottom: 5px;" value="Ingrese su Apellido Paterno" /><br></br>
-            <p:inputText style="width: 200px; margin-bottom: 5px;" type="text"/><br></br>
-            <h:outputText style="width: 200px; margin-bottom: 5px;" value="Ingrese su Apellido Materno" /><br></br>
-            <p:inputText style="width: 200px; margin-bottom: 5px;" type="text"/><br></br>
-            <h:outputText style="width: 200px; margin-bottom: 5px;" value="Ingrese su E-Mail" /><br></br>
-            <p:inputText style="width: 200px; margin-bottom: 5px;" type="e-mail"/><br></br>
-            <h:outputText style="width: 200px; margin-bottom: 5px;" value="Ingrese su Contraseña" /><br></br>
-            <p:inputText style="width: 200px; margin-bottom: 5px;" type="Password"/><br></br><br></br>
-            <p:button style=" width: 200px; margin-bottom: 5px;" value="Registrar" outcome="/faces/Encuestas.xhtml" />
+            <h:form>
+                
+                <h:outputLabel style="width: 200px; margin-bottom: 5px;" value="Ingrese su Nombre" /><br></br>
+                <p:inputText style="width: 200px; margin-bottom: 5px;" value="#{LoginMB.user.nombre}" type="text"/><br></br>
+                
+                <h:outputLabel style="width: 200px; margin-bottom: 5px;" value="Ingrese su Apellido Paterno" /><br></br>
+                <p:inputText style="width: 200px; margin-bottom: 5px;" value="#{LoginMB.user.ape_p}" type="text"/><br></br>
+                
+                <h:outputLabel style="width: 200px; margin-bottom: 5px;" value="Ingrese su Apellido Materno" /><br></br>
+                <p:inputText style="width: 200px; margin-bottom: 5px;" value="#{LoginMB.user.ape_m}" type="text"/><br></br>
+                
+                <h:outputLabel style="width: 200px; margin-bottom: 5px;" value="Ingrese su E-Mail" /><br></br>
+                <p:inputText style="width: 200px; margin-bottom: 5px;" value="#{LoginMB.user.email}" type="e-mail"/><br></br>
+                
+                <h:outputLabel style="width: 200px; margin-bottom: 5px;" value="Ingrese su Contraseña" /><br></br>
+                <p:inputText style="width: 200px; margin-bottom: 5px;" value="#{LoginMB.user.password}" type="Password"/><br></br><br></br>
+                
+                <p:commandButton style=" width: 200px; margin-bottom: 5px;" value="Registrar" action="#{LoginMB.save()}" ajax="false"/>
+                
+            </h:form>
         </p:dialog>
         <h:form style="margin-top: 30px">  
             <h:form id="form">           

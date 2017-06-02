@@ -24,22 +24,34 @@ import org.primefaces.context.RequestContext;
 @ManagedBean(name = "LoginMB")
 @ViewScoped
 
-public class LoginController {
+public class UserController {
     
     private UserDAO userDAO = new UserDAO();
     private User user = new User();
  
     
     public String send(){
-        user = userDAO.loginUser("waffle133@gmail.com","123");
+        user = userDAO.loginUser(user.getEmail(),user.getPassword());
         if (user == null) {
-            
+            user = new User();
             RequestContext.getCurrentInstance().update("growl");
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Usuario no encontrado ","Error en login"));
             return null;
         }else{
             return "/faces/Encuestas.xhtml";
         }
+    }
+    public String save(){
+       user.setId_tipo(1);
+        if (userDAO.insertUser(user)) {
+            RequestContext.getCurrentInstance().update("growl");
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"","Usuario Creado"));
+        }else{
+            RequestContext.getCurrentInstance().update("growl");
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Intentelo más tarde","Error al registrar"));
+        }
+         return null;
+        
     }
     
    
