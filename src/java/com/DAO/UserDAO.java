@@ -32,10 +32,13 @@ public class UserDAO {
         try{
             em.getTransaction().begin();
             Query query =  em 
-                    .createQuery("SELECT u FROM User u");
-                   // .setParameter("email", email)
-                    //.setParameter("pass",pass);
+                    .createQuery("SELECT u FROM User u WHERE u.email = :email AND u.password = :pass")
+                    .setParameter("email", email)
+                    .setParameter("pass",pass);
             List<User> results = (List<User>) query.getResultList();
+            if (results.isEmpty()) {
+               return null; 
+            }
             User user = results.get(0);
             
             

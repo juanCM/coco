@@ -14,8 +14,9 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 
 import javax.faces.context.FacesContext;
-//import javax.management.Query;
 import org.primefaces.context.RequestContext;
+//import javax.management.Query;
+//import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -33,6 +34,7 @@ public class UserController {
     public String send(){
         user = userDAO.loginUser(user.getEmail(),user.getPassword());
         if (user == null) {
+
             user = new User();
             RequestContext.getCurrentInstance().update("growl");
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Usuario no encontrado ","Error en login"));
