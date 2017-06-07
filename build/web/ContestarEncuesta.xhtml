@@ -11,7 +11,7 @@ and open the template in the editor.
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Resultado de mi Encuesta</title>
+        <title>Contestar encuesta</title>
     </h:head>
     <h:body style="background-color:rgb(56, 59, 58); background-size: cover;"> 
         <h:form> 
@@ -32,18 +32,18 @@ and open the template in the editor.
             <h:form>     
                 <p:tieredMenu>
                     <p:menuitem value="Encuestas" action="Encuestas.xhtml"/>
-                    <p:menuitem value="Crear encuesta" action="CrearEncuesta"/>
+                    <p:menuitem value="Crear encuesta" action="CrearEncuesta.xhtml"/>
                     <p:menuitem value="Mis encuestas" action="MisEncuestas.xhtml"/>
                 </p:tieredMenu>
             </h:form>
  
-            <h:form style="height: 575px; width: 1000px">
+            <h:form style="height: 550px; width: 900px">
                 <h:outputText value="Titulo:"/><br/>
                 <h:outputText value="Descripción:"/><br/>
                 
                 <h:outputText value="Preguntas: "/><br/>
                 
-                <p:commandButton style="margin-top: 460px; margin-left: 800px; float:bottom; align-self: center;  width: 205px;" value="Enviar" onclick="PF('dlg2').show();"/>
+                <p:commandButton style="margin-top: 440px; margin-left: 800px; float:bottom; align-self: center;  width: 205px;" value="Enviar" onclick="PF('dlg2').show();"/>
         
                 <p:dialog header="¿Esta seguro?" widgetVar="dlg2" modal="true" height="150" width="280">
                     <h:outputText style="width: 200px; margin-bottom: 5px; text-align: center;" value="Esta enviando sus respuestas de esta encuesta" /><br></br>
