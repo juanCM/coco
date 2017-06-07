@@ -30,11 +30,26 @@
          <!-- ................................LOGIN.............................. -->
         <p:dialog header="Iniciar Sesion" widgetVar="dlg2" modal="true" height="200">
             <h:form>
+
                 <h:outputLabel style="width: 200px; margin-bottom: 5px;" for="email" value="Ingrese Email" /><br></br>
                 <p:inputText style="width: 200px; margin-bottom: 5px;" id="email" value="#{LoginMB.user.email}" type="text"/><br></br>
 
+            
+                <h:outputLabel style="width: 200px; margin-bottom: 5px;" for="email" value="Ingrese Email"/><br></br>
+               
+                <p:inputText style="width: 200px; margin-bottom: 5px;" id="email" value="#{LoginMB.user.email}" type="text" required="true" requiredMessage="Por favor, ingresa tu e-mail"
+                             validatorMessage="e-mail invalido"
+                             >
+                    <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                </p:inputText><br></br>
+
+
                 <h:outputLabel style="width: 200px; margin-bottom: 5px;" for="password" value="Ingrese Contraseña" /><br></br>
-                <p:inputText style="width: 200px; margin-bottom: 5px;" id="password" value="#{LoginMB.user.password}" type="Password"/><br></br><br></br>
+                <p:inputText style="width: 200px; margin-bottom: 5px;" id="password" value="#{LoginMB.user.password}" type="Password" required="true" requiredMessage="Por favor, ingresa tu contraseña" 
+                             validatorMessage="La contraseña debe tener al entre 8 y 20 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula. No puede tener otros símbolos."
+                             >
+                            <f:validateRegex pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,20}" />    
+                </p:inputText><br></br><br></br>
 
                 <p:commandButton style="width: 200px; margin-bottom: 5px;" action="#{LoginMB.send}" value="Ingresar" ajax="false"> </p:commandButton>
             </h:form>
@@ -44,19 +59,27 @@
         <p:dialog header="Registrarse" widgetVar="dlg1" modal="true" height="400">
             <h:form>
                 <h:outputLabel style="width: 200px; margin-bottom: 5px;" value="Ingrese su Nombre" /><br></br>
-                <p:inputText style="width: 200px; margin-bottom: 5px;" value="#{LoginMB.user.nombre}" type="text"/><br></br>
+                <p:inputText style="width: 200px; margin-bottom: 5px;" value="#{LoginMB.user.nombre}" type="text" required="true" requiredMessage="Por favor, ingresa tu nombre"/><br></br>
                 
                 <h:outputLabel style="width: 200px; margin-bottom: 5px;" value="Ingrese su Apellido Paterno" /><br></br>
-                <p:inputText style="width: 200px; margin-bottom: 5px;" value="#{LoginMB.user.ape_p}" type="text"/><br></br>
+                <p:inputText style="width: 200px; margin-bottom: 5px;" value="#{LoginMB.user.ape_p}" type="text" required="true" requiredMessage="Por favor, ingresa tu apellido paterno"/><br></br>
                 
                 <h:outputLabel style="width: 200px; margin-bottom: 5px;" value="Ingrese su Apellido Materno" /><br></br>
-                <p:inputText style="width: 200px; margin-bottom: 5px;" value="#{LoginMB.user.ape_m}" type="text"/><br></br>
+                <p:inputText style="width: 200px; margin-bottom: 5px;" value="#{LoginMB.user.ape_m}" type="text" required="true" requiredMessage="Por favor, ingresa tu apellido materno"/><br></br>
                 
                 <h:outputLabel style="width: 200px; margin-bottom: 5px;" value="Ingrese su E-Mail" /><br></br>
-                <p:inputText style="width: 200px; margin-bottom: 5px;" value="#{LoginMB.user.email}" type="e-mail"/><br></br>
+                <p:inputText style="width: 200px; margin-bottom: 5px;" value="#{LoginMB.user.email}" type="e-mail" required="true" requiredMessage="Por favor, ingresa un e-mail"
+                             validatorMessage="e-mail invalido"
+                             >                    
+                    <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                </p:inputText><br></br>
                 
                 <h:outputLabel style="width: 200px; margin-bottom: 5px;" value="Ingrese su Contraseña" /><br></br>
-                <p:inputText style="width: 200px; margin-bottom: 5px;" value="#{LoginMB.user.password}" type="Password"/><br></br><br></br>
+                <p:inputText style="width: 200px; margin-bottom: 5px;" value="#{LoginMB.user.password}" type="Password" required="true" requiredMessage="Por favor, ingresa tu contraseña"
+                             validatorMessage="La contraseña debe tener al entre 8 y 20 caracteres, al menos un dígito, al menos una minúscula y al menos una mayúscula. No puede tener otros símbolos."
+                             >
+                            <f:validateRegex pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,20}" />    
+                </p:inputText><br></br><br></br>
                 
                 <p:commandButton style=" width: 200px; margin-bottom: 5px;" value="Registrar" action="#{LoginMB.save()}" ajax="false"/>
             </h:form>
