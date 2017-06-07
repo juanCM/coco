@@ -4,32 +4,32 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
-        <title>Proyecto Encuestas</title>
-        <h:outputStylesheet name="css/jsfcrud.css"/>
+        <title>Encuestas</title>
     </h:head>
-    <h:body style="background-color:rgb(56, 59, 58); background-size: cover;"> 
+    <h:body style="background-color:rgb(56, 59, 58); background-size: cover;">
+        
         <!--..............................NAVBAR................................. -->
-        <p:growl id="growl" sticky="true" showDetail="true"/>
+        
         <h:form style="margin-bottom: 5px">  
-            <p:growl id="navbar"/>
-            <p:menubar>
-                <p:menuitem value="MiEncuesta" url="#"/>
-                <p:submenu style="float: right;"  label="Entrar">
-                    <p:menuitem value="Iniciar Sesion" onclick="PF('dlg2').show();"/>
-                    <p:menuitem value="Registrarse" onclick="PF('dlg1').show();"/>
-                    <p:menuitem value="Invitado" url="/faces/InicioInvitado.xhtml"/>
-                </p:submenu>
-            </p:menubar>
+            <p:growl id="navbar" showDetail="true"/>
+            <p:toolbar>
+                <f:facet name="left">
+                Encuestas
+                </f:facet>
+                <f:facet name="right">
+                    <p:menuButton style="float: right;"  value="Entrar">
+                        <p:menuitem value="Iniciar Sesion" onclick="PF('dlg2').show();"/>
+                        <p:menuitem value="Registrarse" onclick="PF('dlg1').show();"/>
+                    </p:menuButton>
+                </f:facet>
+            </p:toolbar>
         </h:form>
         
          <!-- ................................LOGIN.............................. -->
-        
         <p:dialog header="Iniciar Sesion" widgetVar="dlg2" modal="true" height="200">
             <h:form>
-            
                 <h:outputLabel style="width: 200px; margin-bottom: 5px;" for="email" value="Ingrese Email" /><br></br>
                 <p:inputText style="width: 200px; margin-bottom: 5px;" id="email" value="#{LoginMB.user.email}" type="text"/><br></br>
 
@@ -38,18 +38,11 @@
 
                 <p:commandButton style="width: 200px; margin-bottom: 5px;" action="#{LoginMB.send}" value="Ingresar" ajax="false"> </p:commandButton>
             </h:form>
-    
-            
         </p:dialog>
         
-         <!-- ............................REGISTRO.............................. -->
-         
-         <h:form>
-             <h:commandLink action="EditarEncuesta.xhtml" value="Editar encuesta"></h:commandLink>
-         </h:form>
+        <!-- ............................REGISTRO.............................. -->
         <p:dialog header="Registrarse" widgetVar="dlg1" modal="true" height="400">
             <h:form>
-                
                 <h:outputLabel style="width: 200px; margin-bottom: 5px;" value="Ingrese su Nombre" /><br></br>
                 <p:inputText style="width: 200px; margin-bottom: 5px;" value="#{LoginMB.user.nombre}" type="text"/><br></br>
                 
@@ -66,36 +59,48 @@
                 <p:inputText style="width: 200px; margin-bottom: 5px;" value="#{LoginMB.user.password}" type="Password"/><br></br><br></br>
                 
                 <p:commandButton style=" width: 200px; margin-bottom: 5px;" value="Registrar" action="#{LoginMB.save()}" ajax="false"/>
-                
             </h:form>
         </p:dialog>
-        <h:form style="margin-top: 30px">  
-            <h:form id="form">           
-                <p:growl id="msgs" showDetail="true" />
-                <p:accordionPanel>
-                    <p:tab title="Nuestra Pagina">
-                        <h:panelGrid cellpadding="160" style="background-image: url('https://conectica.com/wp-content/uploads/2010/08/Medios-sociales.jpg'); background-size: cover; width:100%; height:100%">
-                            <h:outputText style="color: black; font-family: fantasy; font-size: 20px; " value="Nuestra pagina esta diseñada para crear y contestar encuestas de una forma facil y sencilla, esto debido a que una gran cantidad de estudiantes durante el 6to semestre se tienen que dedicar a elaborar y contestar encuestas" />   
+        
+        <!-- .......................CUERPO DE LA PAGINA..................... -->
+        <p:panelGrid columns="5" layout="grid">   
+            <h:form> 
+                <h:panelGrid style="width: 1000px" columns="1" columnClasses="encuesta">
+                    <p:outputPanel style="width: 100%">
+                        <h:panelGrid style="width: 100%" columns="3" cellspacing="10">
+                            <h:outputText value="Titulo:" />
+                            <h:outputText value="#" style="font-weight: bold"/>
+                            <p:commandButton style="float:right;" value="Ver" type="button" onclick="PF('ver').show();" />
                         </h:panelGrid>
-                    </p:tab>
-                    <p:tab title="Proposito">
-                        <h:panelGrid cellpadding="160" style="background-image: url('https://conectica.com/wp-content/uploads/2010/08/Medios-sociales.jpg'); background-size: cover; width:100%; height:100%">
-                            <h:outputText style="color: black; font-family: fantasy; font-size: 20px; " value="Nuestra pagina tiene como proposito la elaboracion de un proyecto basado en encuestas con el fin de acreditar la materia de Programacion Aplicada" />   
+                    </p:outputPanel>
+                    <p:outputPanel style="width: 100%">
+                        <h:panelGrid style="width: 100%" columns="3" cellspacing="10">
+                            <h:outputText value="Titulo:" />
+                            <h:outputText value="#" style="font-weight: bold"/>
+                            <p:commandButton style="float:right;" value="Ver" type="button" onclick="PF('ver').show();" />
                         </h:panelGrid>
-                    </p:tab>
-                    <p:tab title="Acerca de Nosotros...">
-                        <h:panelGrid cellpadding="160" style="background-image: url('https://conectica.com/wp-content/uploads/2010/08/Medios-sociales.jpg'); background-size: cover; width:100%; height:100%">
-                            <h:outputText style="color: black; font-family: fantasy; font-size: 20px; " value="Somos un grupo de estudiantes del CETI de la division de Informatica y Computacion del grupo 8H1" />   
+                    </p:outputPanel>
+                    <p:outputPanel style="width: 100%">
+                        <h:panelGrid style="width: 100%" columns="3" cellspacing="10">
+                            <h:outputText value="Titulo:" />
+                            <h:outputText value="#" style="font-weight: bold"/>
+                            <p:commandButton style="float:right;" value="Ver" type="button" onclick="PF('ver').show();" />
                         </h:panelGrid>
-                    </p:tab>
-                </p:accordionPanel>
-            </h:form> 
-        </h:form>
-        <br />
-
+                    </p:outputPanel>
+                </h:panelGrid>
+            </h:form>
+        </p:panelGrid>
+        
+        <p:dialog resizable="false" header="Encuesta" widgetVar="ver" modal="true" height="150" width="400">
+            <h:panelGrid style="width: 100%" columns="2" cellspacing="10">
+                <h:outputText value="Titulo:" />
+                <h:outputText value="#" style="font-weight: bold"/>
+                <h:outputText value="Descripcion:" />
+                <h:outputText value="#" style="font-weight: bold"/>
+            </h:panelGrid>
+            <p:commandButton style=" float:bottom; align-self: center;  width: 365px;" value="Iniciar" type="button" />
+        </p:dialog>
     </h:body>
-
-
 </html>
 
 
