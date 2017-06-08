@@ -30,7 +30,7 @@ public class UserDAO {
     
     public User loginUser(String email, String pass){
         try{
-            em.getTransaction().begin();
+           //em.getTransaction().begin();
             Query query =  em 
                     .createQuery("SELECT u FROM User u WHERE u.email = :email AND u.password = :pass")
                     .setParameter("email", email)
